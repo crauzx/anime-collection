@@ -70,10 +70,6 @@ const AnimeCard = ({
     }
   `;
 
-  const chBoxStyle = css`
-    display: ${isShowChBox ? "" : "none"};
-  `;
-
   return (
     <>
       {anime && (
@@ -85,7 +81,6 @@ const AnimeCard = ({
             onClick={() => setRemoveIsOpen(true)}
           />
           <CheckBoxAnime
-            css={chBoxStyle}
             animeId={anime.id}
             selectedAnime={selectedAnime}
             setSelectedAnime={setSelectedAnime}

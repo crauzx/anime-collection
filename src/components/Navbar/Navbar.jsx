@@ -30,7 +30,7 @@ const Navbar = () => {
     @media (max-width: 576px) {
       background-color: #fff;
       position: fixed;
-      z-index: 2;
+      z-index: 4;
       left: ${navbarOpen ? "0" : "-100%"};
       top: 0;
       width: 30%;
@@ -78,7 +78,7 @@ const Navbar = () => {
         <Overlay
           onClick={() => setNavbarOpen(false)}
           css={css`
-            z-index: 1;
+            z-index: 3;
           `}
         />
       )}

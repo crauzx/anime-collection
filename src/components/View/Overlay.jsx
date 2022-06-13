@@ -5,7 +5,7 @@ const StyledOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   width: 100vw;
   height: 100vh;
-  z-index: 3;
+  z-index: 5;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
