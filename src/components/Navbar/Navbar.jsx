@@ -1,44 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import NavbarLogo from "./NavbarLogo";
 import { NavLink, useLocation } from "react-router-dom";
 import { primaryColor } from "../Colors/Colors";
 import Overlay from "../View/Overlay";
+import Nav from "./Nav";
+import NavWrapper from "./NavWrapper";
 
 const Navbar = () => {
   const location = useLocation();
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [currentUrl, setCurrentUrl] = useState("");
-
-  const Nav = styled.nav`
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    color: ${primaryColor};
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
-    @media (max-width: 576px) {
-      padding: 0;
-    }
-  `;
-
-  const NavWrapper = styled.div`
-    display: flex;
-
-    @media (max-width: 576px) {
-      background-color: #fff;
-      position: fixed;
-      z-index: 4;
-      left: ${navbarOpen ? "0" : "-100%"};
-      top: 0;
-      width: 30%;
-      height: 100vh;
-      flex-direction: column;
-      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    }
-  `;
+  const [currentLocation, setCurrentLocation] = useState("");
 
   const navbarItem = css`
     text-decoration: none;
@@ -64,8 +37,10 @@ const Navbar = () => {
   `;
 
   useEffect(() => {
-    setCurrentUrl(location.pathname);
-  }, []);
+    if (location.pathname.includes("collection"))
+      setCurrentLocation("collection");
+    else setCurrentLocation("anime");
+  }, [location]);
 
   return (
     <Nav>
@@ -82,30 +57,24 @@ const Navbar = () => {
           `}
         />
       )}
-      <NavWrapper>
+      <NavWrapper navbarOpen={navbarOpen}>
         <NavbarLogo
           navbarOpen={navbarOpen}
           setNavbarOpen={setNavbarOpen}
           show={true}
         />
         <NavLink
-          css={[navbarItem, currentUrl === "/" && active]}
+          css={[navbarItem, currentLocation === "anime" && active]}
           exact="true"
           to="/"
-          onClick={() => {
-            setCurrentUrl("/");
-            setNavbarOpen(false);
-          }}
+          onClick={() => setNavbarOpen(false)}
         >
           Anime List
         </NavLink>
         <NavLink
-          css={[navbarItem, currentUrl === "/collection" && active]}
+          css={[navbarItem, currentLocation === "collection" && active]}
           to="/collection"
-          onClick={() => {
-            setCurrentUrl("/collection");
-            setNavbarOpen(false);
-          }}
+          onClick={() => setNavbarOpen(false)}
         >
           Collection List
         </NavLink>
