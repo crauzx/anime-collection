@@ -2,7 +2,6 @@
 import styled from "@emotion/styled";
 
 const StyledCardLeft = styled.div`
-  width: 20%;
   padding: 1rem;
 
   @media (max-width: 576px) {

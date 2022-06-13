@@ -4,8 +4,8 @@ import styled from "@emotion/styled";
 const StyledCardContainer = styled.div`
   color: #333;
   display: grid;
-  grid-template-columns: repeat(5, auto);
   justify-content: center;
+  grid-template-columns: repeat(1, auto);
   margin: auto;
   margin: 5px 15px;
   padding: 0;
@@ -18,8 +18,16 @@ const StyledCardContainer = styled.div`
     padding: 0;
   }
 
-  @media (max-width: 576px) {
-    grid-template-columns: repeat(1, auto);
+  @media (min-width: 577px) {
+    grid-template-columns: repeat(2, auto);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, auto);
+  }
+
+  @media (min-width: 1320px) {
+    grid-template-columns: repeat(5, auto);
   }
 `;
 
