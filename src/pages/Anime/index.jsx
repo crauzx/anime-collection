@@ -16,19 +16,12 @@ import CardContainer from "../../components/Card/CardContainer";
 import AnimeCard from "../../components/Card/AnimeCard";
 import Toast from "../../components/Toast/Toast";
 import MultipleToCollectionModal from "../../components/Modal/MultipleToCollectionModal";
+import { ml_3, mr_3 } from "../../components/css/margin";
 
 const page_info = css`
   @media (max-width: 576px) {
     font-size: 18px;
   }
-`;
-
-const ml_5px = css`
-  margin-left: 0.3rem;
-`;
-
-const mr_5px = css`
-  margin-right: 0.3rem;
 `;
 
 const btnGroup = css`
@@ -127,21 +120,21 @@ const Anime = () => {
                   <Button
                     text="Add to collection"
                     leftIcon={true}
-                    icon={<RiAddLine css={mr_5px} />}
-                    css={mr_5px}
+                    icon={<RiAddLine css={mr_3} />}
+                    css={mr_3}
                     onClick={() => openAddModal()}
                   />
                   <Button
                     text="Cancel"
                     onClick={() => closeChBox()}
-                    css={ml_5px}
+                    css={ml_3}
                   />
                 </>
               ) : (
                 <Button
                   text="Set to my collection"
                   leftIcon={true}
-                  icon={<RiAddLine css={mr_5px} />}
+                  icon={<RiAddLine css={mr_3} />}
                   onClick={() => setIsShowChBox(true)}
                 />
               )}
@@ -164,7 +157,7 @@ const Anime = () => {
               <Button
                 text="Prev"
                 leftIcon={true}
-                icon={<RiArrowDropLeftLine css={mr_5px} />}
+                icon={<RiArrowDropLeftLine css={mr_3} />}
                 onClick={() => prevPage()}
               />
             )}
@@ -174,7 +167,7 @@ const Anime = () => {
               <Button
                 text="Next"
                 rightIcon={true}
-                icon={<RiArrowDropRightLine css={ml_5px} />}
+                icon={<RiArrowDropRightLine css={ml_3} />}
                 onClick={() => nextPage()}
                 css={css`
                   margin-left: 10px;

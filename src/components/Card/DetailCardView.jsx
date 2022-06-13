@@ -11,63 +11,18 @@ import Container from "../View/Container";
 import AddToCollectionModal from "../Modal/AddToCollectionModal";
 import Chip from "../Chip/Chip";
 import Toast from "../Toast/Toast";
-
-const StyledCard = styled.div`
-  display: flex;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  padding: 5rem;
-  border-radius: 1rem;
-
-  @media (max-width: 576px) {
-    flex-direction: column-reverse;
-    padding: 3rem;
-  }
-`;
-
-const StyledCardLeft = styled.div`
-  width: 20%;
-  padding: 1rem;
-
-  @media (max-width: 576px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-
-    table {
-      margin-line: auto;
-    }
-  }
-`;
-
-const StyledCardRight = styled.div`
-  margin-left: 1rem;
-  padding: 1rem;
-
-  @media (max-width: 576px) {
-    margin-left: 0;
-    text-align: center;
-  }
-`;
+import Card from "./DetailCard/Card";
+import CardLeft from "./DetailCard/CardLeft";
+import CardRight from "./DetailCard/CardRight";
+import Title from "../Text/Title";
+import SecondaryTitle from "../Text/SecondaryTitle";
+import { mr_20, mb_10 } from "../css/margin";
 
 const TitleWrapper = styled.div`
   padding-inline: 1rem;
   padding-block: 0.3rem;
   background-color: ${primaryColor};
   color: #fff;
-`;
-
-const Title = styled.div`
-  font-weight: bold;
-  font-size: 24px;
-`;
-
-const SecondaryTitle = styled.div`
-  color: #c4c4c4;
-  font-weight: bold;
-  font-size: 20px;
 `;
 
 const Rank = styled.div`
@@ -115,17 +70,6 @@ const StyledTd = styled.td`
 const StyledTable = styled.table`
   width: 100%;
   font-size: 14px;
-`;
-
-const mb_10 = css`
-  margin-bottom: 1rem;
-`;
-
-const mr_20 = css`
-  margin-right: 2rem;
-  @media (max-width: 576px) {
-    margin: 0;
-  }
 `;
 
 const addBtnStyle = css`
@@ -200,8 +144,8 @@ const DetailView = (props) => {
   return (
     <Container>
       {toastMsg !== "" && <Toast>{toastMsg}</Toast>}
-      <StyledCard>
-        <StyledCardLeft>
+      <Card>
+        <CardLeft>
           <img src={image} alt="" />
           <StyledTable>
             <tbody>
@@ -245,8 +189,8 @@ const DetailView = (props) => {
               </tr>
             </tbody>
           </StyledTable>
-        </StyledCardLeft>
-        <StyledCardRight>
+        </CardLeft>
+        <CardRight>
           <TitleWrapper>
             <div className="title-jp">
               <Title>
@@ -293,8 +237,8 @@ const DetailView = (props) => {
               />
             </CollectionWrapper>
           </div>
-        </StyledCardRight>
-      </StyledCard>
+        </CardRight>
+      </Card>
       {isOpen && (
         <AddToCollectionModal
           animeId={animeId}
