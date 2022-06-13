@@ -48,6 +48,11 @@ const AnimeCard = ({
       color: #999;
       font-size: 13px;
       margin: 0 0 40px;
+      line-clamp: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 200px;
     }
   `;
 
