@@ -46,10 +46,6 @@ const CheckBoxCollectionMultiple = ({
   const defaultArray = collections[value];
 
   useEffect(() => {
-    console.log(defaultArray);
-  }, []);
-
-  useEffect(() => {
     const modifCollection = { ...collections };
     selectedAnime.map((animeId) => {
       const index = modifCollection[value].indexOf(`${animeId}`);
