@@ -9,7 +9,7 @@ const StyledCard = styled.div`
   margin: 10px;
   overflow: hidden;
   position: relative;
-  width: 250px;
+  width: 260px;
 
   &:hover {
     cursor: pointer;

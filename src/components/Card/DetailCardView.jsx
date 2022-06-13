@@ -31,8 +31,8 @@ const Rank = styled.div`
   display: flex;
   background-color: ${secondaryColor};
   @media (max-width: 576px) {
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
+    padding-block: 0.8rem;
   }
 `;
 
@@ -45,17 +45,29 @@ const RankInfo = styled.div`
 const RITitle = styled.div`
   font-weight: bold;
   font-size: 20px;
+
+  @media (max-width: 576px) {
+    font-size: 18px;
+  }
 `;
 
 const RIValue = styled.div`
   color: gray;
   font-weight: bold;
   font-size: 16px;
+
+  @media (max-width: 576px) {
+    font-size: 14px;
+  }
 `;
 
 const StyledLabel = styled.div`
   font-weight: bold;
   margin-bottom: 10px;
+
+  @media (max-width: 576px) {
+    font-size: 16px;
+  }
 `;
 
 const StyledTdHead = styled.td`
@@ -70,6 +82,10 @@ const StyledTd = styled.td`
 const StyledTable = styled.table`
   width: 100%;
   font-size: 14px;
+
+  @media (max-width: 576px) {
+    font-size: 13px;
+  }
 `;
 
 const addBtnStyle = css`
@@ -77,8 +93,10 @@ const addBtnStyle = css`
   padding: 0.6rem;
   min-height: 0;
   line-height: 0;
+
   @media (max-width: 576px) {
-    margin-top: 5px;
+    padding: 0.5rem;
+    border-radius: 20px;
   }
 `;
 
@@ -88,7 +106,6 @@ const CollectionWrapper = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 576px) {
-    align-items: flex-start;
     justify-content: center;
   }
 `;
@@ -97,6 +114,16 @@ const Label = styled.h3`
   margin: 0;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+
+  @media (max-width: 576px) {
+    font-size: 16px;
+  }
+`;
+
+const descriptionTxt = css`
+  @media (max-width: 576px) {
+    font-size: 13px;
+  }
 `;
 
 const DetailView = (props) => {
@@ -214,7 +241,10 @@ const DetailView = (props) => {
           </Rank>
           <div className="synopsis" css={mb_10}>
             <StyledLabel>Synopsis</StyledLabel>
-            <div dangerouslySetInnerHTML={{ __html: description }}></div>
+            <div
+              dangerouslySetInnerHTML={{ __html: description }}
+              css={descriptionTxt}
+            />
           </div>
           <div className="saved-collection">
             <Label>Save to My Collections</Label>

@@ -8,6 +8,7 @@ const StyledHeaderContent = styled.div`
   @media (max-width: 576px) {
     align-items: center;
     flex-direction: column;
+    margin-bottom: 2rem;
   }
 `;
 

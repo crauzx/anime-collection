@@ -5,7 +5,7 @@ const StyledCardBody = styled.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  min-height: 200px;
+  min-height: 180px;
   padding: 20px;
 `;
 

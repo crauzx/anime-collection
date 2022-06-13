@@ -4,6 +4,10 @@ import styled from "@emotion/styled";
 const StyledCardLeft = styled.div`
   padding: 1rem;
 
+  img {
+    margin-bottom: 0.5rem;
+  }
+
   @media (max-width: 576px) {
     display: flex;
     flex-direction: column;
@@ -12,7 +16,9 @@ const StyledCardLeft = styled.div`
     padding: 0;
 
     table {
-      margin-line: auto;
+      margin: 1rem;
+      padding: 0.5rem;
+      width: 80%;
     }
   }
 `;

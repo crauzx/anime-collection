@@ -68,10 +68,6 @@ const MultipleToCollectionModal = ({ setIsOpen, animeId, setToastMsg, selectedAn
     setNcName("");
   };
 
-  const checkContains = (array) => {
-    return array.indexOf(animeId) > -1;
-  };
-
   useEffect(() => {
     // Check if is not null
     const datas = JSON.parse(window.localStorage.getItem("anime_collections"));
@@ -99,9 +95,8 @@ const MultipleToCollectionModal = ({ setIsOpen, animeId, setToastMsg, selectedAn
                 <CheckBoxCollectionMultiple
                   id={idx}
                   value={name}
-                  defaultChecked={checkContains(collections[name])}
-                  animeId={animeId}
                   collections={collections}
+                  setCollections={setCollections}
                   key={idx}
                   selectedAnime={selectedAnime}
                 />

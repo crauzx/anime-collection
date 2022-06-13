@@ -38,24 +38,32 @@ const CheckBoxCollectionMultiple = ({
   id,
   value,
   collections,
+  setCollections,
   selectedAnime,
   ...attr
 }) => {
   const [checked, setChecked] = useState(false);
   const [changeVal, setChangeVal] = useState(false);
-  const defaultArray = collections[value];
+  const [defaultArray, setDefaultArray] = useState([]);
 
   useEffect(() => {
-    const modifCollection = { ...collections };
+    const temp = [];
+    collections[value].map((id) => temp.push(id));
+    setDefaultArray(temp);
+  }, [])
+
+  useEffect(() => {
+    const modifCollection = JSON.parse(JSON.stringify(collections));
     selectedAnime.map((animeId) => {
       const index = modifCollection[value].indexOf(`${animeId}`);
       if (checked === true && changeVal === true && index === -1) {
         modifCollection[value].push(`${animeId}`);
       } else if (checked === false && changeVal === true && index > -1) {
-        if(defaultArray.indexOf(`${animeId}`) === -1)
+        if (defaultArray.indexOf(`${animeId}`) === -1)
           modifCollection[value].splice(index, 1);
       }
     });
+    setCollections(modifCollection);
   }, [checked]);
 
   return (

@@ -8,11 +8,15 @@ const StyledChip = styled.div`
   color: #fff;
   display: inline-block;
   font-size: 13px;
-  margin: 5px 5px 5px 0px;
+  margin: 5px 10px 5px 0px;
   padding: 0.5rem 1rem;
 
   &:hover {
     cursor: pointer;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 12px;
   }
 `;
 

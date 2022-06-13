@@ -10,7 +10,7 @@ const StyledCard = styled.div`
 
   @media (max-width: 576px) {
     flex-direction: column-reverse;
-    padding: 3rem;
+    padding: 0;
   }
 `;
 
