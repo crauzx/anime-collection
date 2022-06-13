@@ -14,12 +14,13 @@ import Toast from "../Toast/Toast";
 
 const StyledCard = styled.div`
   display: flex;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   padding: 5rem;
   border-radius: 1rem;
 
   @media (max-width: 576px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding: 3rem;
   }
 `;
@@ -29,7 +30,15 @@ const StyledCardLeft = styled.div`
   padding: 1rem;
 
   @media (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     padding: 0;
+
+    table {
+      margin-line: auto;
+    }
   }
 `;
 
@@ -39,7 +48,6 @@ const StyledCardRight = styled.div`
 
   @media (max-width: 576px) {
     margin-left: 0;
-    margin-top: 2rem;
     text-align: center;
   }
 `;
@@ -136,7 +144,8 @@ const CollectionWrapper = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 576px) {
-    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
   }
 `;
 
