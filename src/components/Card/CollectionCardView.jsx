@@ -12,6 +12,34 @@ import CardBody from "./CardBody";
 import CardHeader from "./CardHeader";
 import EditCollectionModal from "../Modal/EditCollectionModal";
 import RemoveCollectionModal from "../Modal/RemoveCollectionModal";
+import TextButton from "../Button/TextButton";
+import { accentColor } from "../Colors/Colors";
+import { ml_3, mr_3 } from "../../components/css/margin";
+
+const removeTxtBtnCss = css`
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  line-height: 1.25;
+  min-height: 2.5rem;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+
+  &:hover {
+    color: ${accentColor};
+  }
+`;
+
+const editBtnCss = css`
+  min-width: 45%;
+
+  @media (max-width: 576px) {
+    font-size: 16px;
+    min-height: 2.5rem;
+    border-radius: 0.8rem;
+  }
+`;
 
 const CollectionCard = ({ name, collections, setCollections, setToastMsg }) => {
   const [editIsOpen, setEditIsOpen] = useState(false);
@@ -56,34 +84,24 @@ const CollectionCard = ({ name, collections, setCollections, setToastMsg }) => {
       >
         <ButtonGroup
           css={css`
-            justify-content: space-between;
+            justify-content: space-around;
             width: 100%;
           `}
         >
           <Button
             text="Edit"
             leftIcon={true}
-            icon={
-              <FaPencilAlt
-                css={css`
-                  margin-right: 5px;
-                `}
-              />
-            }
+            icon={<FaPencilAlt css={mr_3} />}
+            css={editBtnCss}
             onClick={() => setEditIsOpen(true)}
           />
-          <Button
-            text="Remove"
-            rightIcon={true}
-            icon={
-              <FaTrashAlt
-                css={css`
-                  margin-left: 5px;
-                `}
-              />
-            }
+          <TextButton
             onClick={() => setRemoveIsOpen(true)}
-          />
+            css={removeTxtBtnCss}
+          >
+            Remove
+            <FaTrashAlt css={ml_3} />
+          </TextButton>
         </ButtonGroup>
       </CardBody>
       {editIsOpen && (
