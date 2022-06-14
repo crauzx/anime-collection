@@ -150,7 +150,7 @@ const DetailView = (props) => {
       const interval = setInterval(() => {
         setWarnToastMsg("");
         clearInterval(interval);
-      }, 1000);
+      }, 2000);
     }
   }, [warnToastMsg]);
 
@@ -159,7 +159,7 @@ const DetailView = (props) => {
       const interval = setInterval(() => {
         setNotifToastMsg("");
         clearInterval(interval);
-      }, 1000);
+      }, 2000);
     }
   }, [notifToastMsg]);
 

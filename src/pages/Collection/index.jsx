@@ -34,7 +34,7 @@ const CollectionList = () => {
       const interval = setInterval(() => {
         setToastMsg("");
         clearInterval(interval);
-      }, 1000);
+      }, 2000);
     }
   }, [toastMsg]);
 

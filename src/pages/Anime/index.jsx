@@ -92,7 +92,7 @@ const Anime = () => {
       const interval = setInterval(() => {
         setWarnToastMsg("");
         clearInterval(interval);
-      }, 1000);
+      }, 2000);
     }
   }, [warnToastMsg]);
 
@@ -101,7 +101,7 @@ const Anime = () => {
       const interval = setInterval(() => {
         setNotifToastMsg("");
         clearInterval(interval);
-      }, 1000);
+      }, 2000);
     }
   }, [notifToastMsg]);
 
