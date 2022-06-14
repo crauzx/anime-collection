@@ -57,9 +57,14 @@ const CheckBoxCollectionMultiple = ({
     const modifCollection = JSON.parse(JSON.stringify(collections));
     selectedAnime.map((animeId) => {
       const index = modifCollection[value].indexOf(`${animeId}`);
-      if (checked === true && changeVal === true && index === -1) {
-        modifCollection[value].push(`${animeId}`);
-        setNotifToastMsg(`Added to ${value} collection`);
+      if (checked === true && changeVal === true) {
+        if(index === -1){
+          modifCollection[value].push(`${animeId}`);
+          setNotifToastMsg(`Added to ${value} collection`);
+        } else {
+          if(selectedAnime.length === 1)
+            setNotifToastMsg(`This anime is already in ${value} collection`);
+        }
       } else if (checked === false && changeVal === true && index > -1) {
         if (defaultArray.indexOf(`${animeId}`) === -1){
           modifCollection[value].splice(index, 1);
