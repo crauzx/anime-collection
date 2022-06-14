@@ -56,7 +56,7 @@ const CheckBoxAnime = ({
       const idx = modifAnime.indexOf(animeId);
       if (idx > -1) modifAnime.splice(idx, 1);
     }
-
+    
     setSelectedAnime(modifAnime);
   }, [checked]);
 

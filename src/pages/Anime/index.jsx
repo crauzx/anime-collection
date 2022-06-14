@@ -18,6 +18,7 @@ import WarningToast from "../../components/Toast/WarningToast";
 import MultipleToCollectionModal from "../../components/Modal/MultipleToCollectionModal";
 import { ml_3, mr_3 } from "../../components/css/margin";
 import NotificationToast from "../../components/Toast/NotificationToast";
+import Loading from "../../components/Loading/Loading";
 
 const page_info = css`
   @media (max-width: 576px) {
@@ -44,7 +45,7 @@ const Anime = () => {
     page: 1,
     perPage: 10,
   });
-  const [loadAnimeList, { data }] = useLazyQuery(QUERY_PAGINATION, {
+  const [loadAnimeList, { loading, data }] = useLazyQuery(QUERY_PAGINATION, {
     variables: variables,
   });
 
@@ -110,6 +111,7 @@ const Anime = () => {
 
   return (
     <div>
+      {loading && <Loading />}
       {data && (
         <Container>
           {isOpen && (
