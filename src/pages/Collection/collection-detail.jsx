@@ -10,7 +10,7 @@ import ButtonGroup from "../../components/Button/ButtonGroup";
 import EditCollectionModal from "../../components/Modal/EditCollectionModal";
 import CardContainer from "../../components/Card/CardContainer";
 import AnimeCard from "../../components/Card/AnimeCard";
-import Toast from "../../components/Toast/Toast";
+import WarningToast from "../../components/Toast/WarningToast";
 import EmptyPage from "../../components/EmptyPage/EmptyPage";
 
 const CollectionDetail = () => {
@@ -38,7 +38,7 @@ const CollectionDetail = () => {
 
   return (
     <Container>
-      {toastMsg !== "" && <Toast>{toastMsg}</Toast>}
+      {toastMsg !== "" && <WarningToast>{toastMsg}</WarningToast>}
       <HeaderContent>
         <h2>{collectionName}</h2>
         <ButtonGroup>

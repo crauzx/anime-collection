@@ -40,7 +40,7 @@ const ToastMessage = styled.div`
   margin-left: 0.5rem;
 `;
 
-const Toast = ({ children }) => {
+const WarningToast = ({ children }) => {
   return (
     <ToastContainer>
       <ToastIcon>
@@ -51,4 +51,4 @@ const Toast = ({ children }) => {
   );
 };
 
-export default Toast;
+export default WarningToast;

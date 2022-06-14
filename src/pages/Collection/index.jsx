@@ -9,7 +9,7 @@ import ButtonGroup from "../../components/Button/ButtonGroup";
 import CollectionCard from "../../components/Card/CollectionCardView";
 import CardContainer from "../../components/Card/CardContainer";
 import AddCollectionModal from "../../components/Modal/AddCollectionModal";
-import Toast from "../../components/Toast/Toast";
+import WarningToast from "../../components/Toast/WarningToast";
 import EmptyPage from "../../components/EmptyPage/EmptyPage";
 
 const CollectionList = () => {
@@ -40,7 +40,7 @@ const CollectionList = () => {
 
   return (
     <Container>
-      {toastMsg !== "" && <Toast>{toastMsg}</Toast>}
+      {toastMsg !== "" && <WarningToast>{toastMsg}</WarningToast>}
       <HeaderContent>
         <h2 css={page_info}>My Collections</h2>
         <ButtonGroup>

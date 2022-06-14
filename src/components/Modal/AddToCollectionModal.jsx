@@ -14,7 +14,7 @@ import CheckBoxCollection from "../Input/CheckBoxCollection";
 import Modal from "./Modal";
 import ModalTextBtn from "./ModalTextBtn";
 
-const AddToCollectionModal = ({ setIsOpen, animeId, setToastMsg }) => {
+const AddToCollectionModal = ({ setIsOpen, animeId, setWarnToastMsg, setNotifToastMsg }) => {
   const [isCreate, setIsCreate] = useState(false);
   const [collections, setCollections] = useState({});
   const [ncName, setNcName] = useState("");
@@ -34,11 +34,11 @@ const AddToCollectionModal = ({ setIsOpen, animeId, setToastMsg }) => {
 
   const createNewCollection = () => {
     if (validateCannotEmpty()) {
-      setToastMsg("Name Is Empty !");
+      setWarnToastMsg("Name Is Empty !");
     } else if (validateSpecialCharater()) {
-      setToastMsg("Name Contains Special Character !");
+      setWarnToastMsg("Name Contains Special Character !");
     } else if (validateExist()) {
-      setToastMsg("Name Already Exist !");
+      setWarnToastMsg("Name Already Exist !");
     }
 
     if (
@@ -53,14 +53,6 @@ const AddToCollectionModal = ({ setIsOpen, animeId, setToastMsg }) => {
       setCollections(modifCollection);
       setIsCreate(false);
     }
-  };
-
-  const saveCollection = () => {
-    window.localStorage.setItem(
-      "anime_collections",
-      JSON.stringify(collections)
-    );
-    setIsOpen(false);
   };
 
   const showForm = () => {
@@ -79,11 +71,11 @@ const AddToCollectionModal = ({ setIsOpen, animeId, setToastMsg }) => {
   }, []);
 
   return (
-    <Modal click={saveCollection}>
+    <Modal click={() => setIsOpen(false)}>
       <ModalWrapper>
         <ModalHeader>
           <ModalHeading>Save To...</ModalHeading>
-          <ModalCloseBtn onClick={saveCollection}>
+          <ModalCloseBtn onClick={() => setIsOpen(false)}>
             <RiCloseLine
               css={css`
                 margin-bottom: -3px;
@@ -102,6 +94,7 @@ const AddToCollectionModal = ({ setIsOpen, animeId, setToastMsg }) => {
                   defaultChecked={checkContains(collections[name])}
                   animeId={animeId}
                   collections={collections}
+                  setNotifToastMsg={setNotifToastMsg}
                   key={idx}
                 />
               ))}

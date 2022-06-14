@@ -38,8 +38,9 @@ const CheckBoxCollectionMultiple = ({
   id,
   value,
   collections,
-  setCollections,
   selectedAnime,
+  setCollections,
+  setNotifToastMsg,
   ...attr
 }) => {
   const [checked, setChecked] = useState(false);
@@ -58,12 +59,20 @@ const CheckBoxCollectionMultiple = ({
       const index = modifCollection[value].indexOf(`${animeId}`);
       if (checked === true && changeVal === true && index === -1) {
         modifCollection[value].push(`${animeId}`);
+        setNotifToastMsg(`Added to ${value} collection`);
       } else if (checked === false && changeVal === true && index > -1) {
-        if (defaultArray.indexOf(`${animeId}`) === -1)
+        if (defaultArray.indexOf(`${animeId}`) === -1){
           modifCollection[value].splice(index, 1);
+          setNotifToastMsg(`Removed from ${value} collection`);
+        }
       }
     });
     setCollections(modifCollection);
+
+    window.localStorage.setItem(
+      "anime_collections",
+      JSON.stringify(modifCollection)
+    );
   }, [checked]);
 
   return (

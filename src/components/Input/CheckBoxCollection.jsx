@@ -40,6 +40,7 @@ const CheckBoxCollection = ({
   defaultChecked = false,
   collections,
   animeId,
+  setNotifToastMsg,
   ...attr
 }) => {
   const [checked, setChecked] = useState(defaultChecked);
@@ -48,16 +49,24 @@ const CheckBoxCollection = ({
   useEffect(() => {
     const modifCollection = { ...collections };
 
-    if (checked === true && changeVal === true)
+    if (checked === true && changeVal === true){
       // If check value is true and it's from changing value not default value
       modifCollection[value].push(animeId);
+      setNotifToastMsg(`Added to ${value} collection`);
+    }
     else if(checked === false && changeVal === true) {
       // If check value is false and it's from changing value not default value
       const index = modifCollection[value].indexOf(animeId);
       if (index > -1) {
         modifCollection[value].splice(index, 1);
+        setNotifToastMsg(`Removed from ${value} collection`);
       }
     }
+
+    window.localStorage.setItem(
+      "anime_collections",
+      JSON.stringify(modifCollection)
+    );
   }, [checked, changeVal]);
 
   return (

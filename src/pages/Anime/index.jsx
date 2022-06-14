@@ -14,9 +14,10 @@ import Button from "../../components/Button/Button";
 import HeaderContent from "../../components/View/HeaderContent";
 import CardContainer from "../../components/Card/CardContainer";
 import AnimeCard from "../../components/Card/AnimeCard";
-import Toast from "../../components/Toast/Toast";
+import WarningToast from "../../components/Toast/WarningToast";
 import MultipleToCollectionModal from "../../components/Modal/MultipleToCollectionModal";
 import { ml_3, mr_3 } from "../../components/css/margin";
+import NotificationToast from "../../components/Toast/NotificationToast";
 
 const page_info = css`
   @media (max-width: 576px) {
@@ -37,7 +38,8 @@ const Anime = () => {
   const [selectedAnime, setSelectedAnime] = useState([]);
   const [isShowChBox, setIsShowChBox] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [toastMsg, setToastMsg] = useState("");
+  const [warnToastMsg, setWarnToastMsg] = useState("");
+  const [notifToastMsg, setNotifToastMsg] = useState("");
   const [variables, setVariables] = useState({
     page: 1,
     perPage: 10,
@@ -72,7 +74,7 @@ const Anime = () => {
   const openAddModal = () => {
     if (selectedAnime.length !== 0) setIsOpen(true);
     else {
-      setToastMsg("No anime selected!");
+      setWarnToastMsg("No anime selected!");
     }
   };
 
@@ -85,13 +87,22 @@ const Anime = () => {
   }, [variables]);
 
   useEffect(() => {
-    if (toastMsg !== "") {
+    if (warnToastMsg !== "") {
       const interval = setInterval(() => {
-        setToastMsg("");
+        setWarnToastMsg("");
         clearInterval(interval);
       }, 1000);
     }
-  }, [toastMsg]);
+  }, [warnToastMsg]);
+
+  useEffect(() => {
+    if (notifToastMsg !== "") {
+      const interval = setInterval(() => {
+        setNotifToastMsg("");
+        clearInterval(interval);
+      }, 1000);
+    }
+  }, [notifToastMsg]);
 
   useEffect(() => {
     if (isOpen === false) closeChBox();
@@ -104,11 +115,13 @@ const Anime = () => {
           {isOpen && (
             <MultipleToCollectionModal
               setIsOpen={setIsOpen}
-              setToastMsg={setToastMsg}
+              setWarnToastMsg={setWarnToastMsg}
+              setNotifToastMsg={setNotifToastMsg}
               selectedAnime={selectedAnime}
             />
           )}
-          {toastMsg !== "" && <Toast>{toastMsg}</Toast>}
+          {warnToastMsg !== "" && <WarningToast>{warnToastMsg}</WarningToast>}
+          {notifToastMsg !== "" && <NotificationToast>{notifToastMsg}</NotificationToast>}
           <HeaderContent>
             <h2 css={page_info}>
               Page {data.Page.pageInfo.currentPage} of{" "}

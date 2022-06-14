@@ -14,7 +14,12 @@ import CheckBoxCollectionMultiple from "../Input/CheckBoxCollectionMultiple";
 import Modal from "./Modal";
 import ModalTextBtn from "./ModalTextBtn";
 
-const MultipleToCollectionModal = ({ setIsOpen, animeId, setToastMsg, selectedAnime }) => {
+const MultipleToCollectionModal = ({
+  setIsOpen,
+  selectedAnime,
+  setWarnToastMsg,
+  setNotifToastMsg,
+}) => {
   const [isCreate, setIsCreate] = useState(false);
   const [collections, setCollections] = useState({});
   const [ncName, setNcName] = useState("");
@@ -34,11 +39,11 @@ const MultipleToCollectionModal = ({ setIsOpen, animeId, setToastMsg, selectedAn
 
   const createNewCollection = () => {
     if (validateCannotEmpty()) {
-      setToastMsg("Name Is Empty !");
+      setWarnToastMsg("Name Is Empty !");
     } else if (validateSpecialCharater()) {
-      setToastMsg("Name Contains Special Character !");
+      setWarnToastMsg("Name Contains Special Character !");
     } else if (validateExist()) {
-      setToastMsg("Name Already Exist !");
+      setWarnToastMsg("Name Already Exist !");
     }
 
     if (
@@ -55,14 +60,6 @@ const MultipleToCollectionModal = ({ setIsOpen, animeId, setToastMsg, selectedAn
     }
   };
 
-  const saveCollection = () => {
-    window.localStorage.setItem(
-      "anime_collections",
-      JSON.stringify(collections)
-    );
-    setIsOpen(false);
-  };
-
   const showForm = () => {
     setIsCreate(true);
     setNcName("");
@@ -75,11 +72,11 @@ const MultipleToCollectionModal = ({ setIsOpen, animeId, setToastMsg, selectedAn
   }, []);
 
   return (
-    <Modal click={saveCollection}>
+    <Modal click={() => setIsOpen(false)}>
       <ModalWrapper>
         <ModalHeader>
           <ModalHeading>Save To...</ModalHeading>
-          <ModalCloseBtn onClick={saveCollection}>
+          <ModalCloseBtn onClick={() => setIsOpen(false)}>
             <RiCloseLine
               css={css`
                 margin-bottom: -3px;
@@ -97,6 +94,7 @@ const MultipleToCollectionModal = ({ setIsOpen, animeId, setToastMsg, selectedAn
                   value={name}
                   collections={collections}
                   setCollections={setCollections}
+                  setNotifToastMsg={setNotifToastMsg}
                   key={idx}
                   selectedAnime={selectedAnime}
                 />

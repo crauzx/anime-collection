@@ -10,13 +10,14 @@ import Button from "../Button/Button";
 import Container from "../View/Container";
 import AddToCollectionModal from "../Modal/AddToCollectionModal";
 import Chip from "../Chip/Chip";
-import Toast from "../Toast/Toast";
+import WarningToast from "../Toast/WarningToast";
 import Card from "./DetailCard/Card";
 import CardLeft from "./DetailCard/CardLeft";
 import CardRight from "./DetailCard/CardRight";
 import Title from "../Text/Title";
 import SecondaryTitle from "../Text/SecondaryTitle";
 import { mr_20, mb_10 } from "../css/margin";
+import NotificationToast from "../Toast/NotificationToast";
 
 const TitleWrapper = styled.div`
   padding-inline: 1rem;
@@ -127,7 +128,8 @@ const descriptionTxt = css`
 `;
 
 const DetailView = (props) => {
-  const [toastMsg, setToastMsg] = useState("");
+  const [warnToastMsg, setWarnToastMsg] = useState("");
+  const [notifToastMsg, setNotifToastMsg] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [collections, setCollections] = useState({});
 
@@ -144,13 +146,22 @@ const DetailView = (props) => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (toastMsg !== "") {
+    if (warnToastMsg !== "") {
       const interval = setInterval(() => {
-        setToastMsg("");
+        setWarnToastMsg("");
         clearInterval(interval);
       }, 1000);
     }
-  }, [toastMsg]);
+  }, [warnToastMsg]);
+
+  useEffect(() => {
+    if (notifToastMsg !== "") {
+      const interval = setInterval(() => {
+        setNotifToastMsg("");
+        clearInterval(interval);
+      }, 1000);
+    }
+  }, [notifToastMsg]);
 
   const {
     image,
@@ -170,7 +181,8 @@ const DetailView = (props) => {
 
   return (
     <Container>
-      {toastMsg !== "" && <Toast>{toastMsg}</Toast>}
+      {warnToastMsg !== "" && <WarningToast>{warnToastMsg}</WarningToast>}
+      {notifToastMsg !== "" && <NotificationToast>{notifToastMsg}</NotificationToast>}
       <Card>
         <CardLeft>
           <img src={image} alt="" />
@@ -273,7 +285,8 @@ const DetailView = (props) => {
         <AddToCollectionModal
           animeId={animeId}
           setIsOpen={setIsOpen}
-          setToastMsg={setToastMsg}
+          setWarnToastMsg={setWarnToastMsg}
+          setNotifToastMsg={setNotifToastMsg}
         />
       )}
     </Container>
