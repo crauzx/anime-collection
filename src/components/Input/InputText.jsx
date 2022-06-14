@@ -21,6 +21,9 @@ const styledInputGroup = css`
     outline: 0;
     transition: border-color 0.2s;
     width: 100%;
+    @media (max-width: 576px) {
+      font-size: 0.9rem;
+    }
 
     &::placeholder {
       color: transparent;
@@ -30,6 +33,9 @@ const styledInputGroup = css`
       font-size: 1rem;
       cursor: text;
       top: 20px;
+      @media (max-width: 576px) {
+        font-size: 0.9rem;
+      }
     }
   }
 
@@ -40,6 +46,10 @@ const styledInputGroup = css`
     transition: 0.2s;
     font-size: 1rem;
     color: #000;
+
+    @media (max-width: 576px) {
+      font-size: 0.9rem;
+    }
   }
 
   .form__field:focus {
@@ -50,6 +60,10 @@ const styledInputGroup = css`
       transition: 0.2s;
       font-size: 1rem;
       color: ${primaryColor};
+
+      @media (max-width: 576px) {
+        font-size: 0.9rem;
+      }
     }
     padding-bottom: 6px;
     border-image: linear-gradient(to right, ${primaryColor}, ${primaryColor});

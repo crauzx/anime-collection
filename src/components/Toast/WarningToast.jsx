@@ -4,7 +4,6 @@ import { RiErrorWarningLine } from "react-icons/ri";
 
 const ToastContainer = styled.div`
   background-color: red;
-  width: 15rem;
   position: fixed;
   top: 2%;
   right: 1%;
@@ -14,10 +13,6 @@ const ToastContainer = styled.div`
   align-items: center;
   padding: 0.5rem;
   border-radius: 10px;
-
-  @media (max-width: 576px) {
-    width: 13rem;
-  }
 `;
 
 const ToastIcon = styled.div`
@@ -38,6 +33,10 @@ const ToastMessage = styled.div`
   text-align: center;
   width: 100%;
   margin-left: 0.5rem;
+
+  @media (max-width: 576px) {
+    font-size: 13px;
+  }
 `;
 
 const WarningToast = ({ children }) => {

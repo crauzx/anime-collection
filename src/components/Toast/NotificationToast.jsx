@@ -4,7 +4,6 @@ import { primaryColor } from "../Colors/Colors";
 
 const ToastContainer = styled.div`
   background-color: ${primaryColor};
-  width: 15rem;
   position: fixed;
   bottom: 2%;
   left: 1%;
@@ -13,10 +12,6 @@ const ToastContainer = styled.div`
   display: flex;
   padding: 0.7rem;
   border-radius: 10px;
-
-  @media (max-width: 576px) {
-    width: 13rem;
-  }
 `;
 
 const ToastMessage = styled.div`
