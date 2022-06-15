@@ -1,6 +1,6 @@
 # Result Website
 
-This project result can be see in https://animetion-c1910.web.app/.
+This project result can be seen at https://animetion-c1910.web.app/.
 
 # Getting Started with Create React App
 
